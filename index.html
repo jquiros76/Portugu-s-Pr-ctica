@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA Productividad</title>
+
+<style>
+body {
+  font-family: Arial;
+  background: #111;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.card {
+  background: #1c1c1c;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 400px;
+  margin: auto;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #ff6600;
+  color: white;
+  font-size: 16px;
+}
+.hidden { display:none; }
+</style>
+</head>
+
+<body>
+
+<div class="card" id="step1">
+  <h2>Trabaja 10x más rápido con IA ⚡</h2>
+  <p>Aprende en 3 minutos</p>
+  <button onclick="next(2)">Empezar</button>
+</div>
+
+<div class="card hidden" id="step2">
+  <h3>Problema común 😓</h3>
+  <p>Pasas horas escribiendo mensajes o contenido.</p>
+  <button onclick="next(3)">Continuar</button>
+</div>
+
+<div class="card hidden" id="step3">
+  <h3>Solución 🤖</h3>
+  <p>La IA puede hacerlo por ti en segundos.</p>
+  <button onclick="next(4)">Ver ejemplo</button>
+</div>
+
+<div class="card hidden" id="step4">
+  <h3>Ejemplo real</h3>
+  <p><b>Prompt:</b></p>
+  <p>"Escribe un mensaje para vender un curso de inglés"</p>
+  <button onclick="next(5)">Ver resultado</button>
+</div>
+
+<div class="card hidden" id="step5">
+  <h3>Resultado 🚀</h3>
+  <p>“Aprende inglés en 90 días con nuestro sistema guiado…”</p>
+  <button onclick="next(6)">Siguiente</button>
+</div>
+
+<div class="card hidden" id="step6">
+  <h3>Conclusión</h3>
+  <p>Esto es solo una pequeña parte de lo que puedes hacer con IA.</p>
+  <button onclick="restart()">Repetir</button>
+</div>
+
+<script>
+function next(step){
+  document.querySelectorAll('.card').forEach(el=>el.classList.add('hidden'));
+  document.getElementById('step'+step).classList.remove('hidden');
+}
+function restart(){
+  location.reload();
+}
+</script>
+
+</body>
+</html>
