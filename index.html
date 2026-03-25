@@ -1,88 +1,1140 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IA Productividad</title>
-
+<title>Curso: Portugués Básico — Ruta360</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Fraunces:ital,wght@0,700;1,400;1,700&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --blue: #1a3a7a;
+    --blue-mid: #2350a8;
+    --blue-light: #eef3ff;
+    --blue-mid-light: #d6e2ff;
+    --green: #00875a;
+    --green-light: #e3f7ef;
+    --yellow: #f5c800;
+    --yellow-light: #fffbe6;
+    --white: #ffffff;
+    --ink: #111827;
+    --ink2: #374151;
+    --muted: #9ca3af;
+    --border: #e5e7eb;
+    --bg: #f7f9ff;
+    --card: #ffffff;
+    --red: #cc2200;
+    --red-light: #fff0ee;
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
-  font-family: Arial;
-  background: #111;
-  color: white;
-  padding: 20px;
-  text-align: center;
+font-family: ‘Plus Jakarta Sans’, sans-serif;
+background: var(–bg);
+color: var(–ink);
+min-height: 100vh;
+overflow-x: hidden;
 }
+
+/* HERO */
+.hero {
+background: linear-gradient(135deg, var(–blue) 0%, var(–blue-mid) 60%, #1a6b4a 100%);
+padding: 52px 48px 0;
+position: relative;
+overflow: hidden;
+}
+
+.hero::before {
+content: ‘’;
+position: absolute;
+width: 500px; height: 500px;
+border-radius: 50%;
+background: rgba(255,255,255,0.04);
+top: -200px; right: -150px;
+pointer-events: none;
+}
+
+.hero::after {
+content: ‘’;
+position: absolute;
+width: 200px; height: 200px;
+border-radius: 50%;
+background: var(–yellow);
+opacity: 0.08;
+bottom: 20px; left: -60px;
+pointer-events: none;
+}
+
+.hero-top {
+display: flex;
+align-items: center;
+gap: 12px;
+margin-bottom: 30px;
+animation: drop 0.5s ease both;
+}
+
+.brand { background: white; color: var(–blue); font-weight: 800; font-size: 0.75rem; letter-spacing: 0.08em; padding: 5px 12px; border-radius: 4px; }
+.flag { font-size: 1.4rem; }
+.lang-badge { background: var(–yellow); color: var(–blue); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 4px; }
+
+.hero h1 {
+font-family: ‘Fraunces’, serif;
+font-size: clamp(2.4rem, 5vw, 4.2rem);
+font-weight: 700;
+color: white;
+line-height: 1.0;
+max-width: 640px;
+animation: drop 0.5s 0.1s ease both;
+}
+
+.hero h1 em {
+font-style: italic;
+font-weight: 400;
+color: var(–yellow);
+}
+
+.hero-sub {
+margin-top: 14px;
+font-size: 1rem;
+color: rgba(255,255,255,0.72);
+max-width: 500px;
+line-height: 1.7;
+font-weight: 300;
+animation: drop 0.5s 0.2s ease both;
+}
+
+.hero-stats {
+display: flex;
+gap: 0;
+margin-top: 36px;
+border-top: 1px solid rgba(255,255,255,0.12);
+animation: drop 0.5s 0.3s ease both;
+}
+
+.hstat {
+flex: 1;
+padding: 16px 0;
+text-align: center;
+border-right: 1px solid rgba(255,255,255,0.12);
+}
+
+.hstat:last-child { border-right: none; }
+.hstat-num { font-family: ‘Fraunces’, serif; font-size: 1.6rem; font-weight: 700; color: var(–yellow); }
+.hstat-label { font-size: 0.7rem; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+
+/* PROGRESS */
+.pbar-wrap {
+background: var(–blue);
+padding: 12px 48px;
+display: flex;
+align-items: center;
+gap: 16px;
+}
+
+.pl { font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; font-weight: 700; }
+.pb { flex: 1; height: 4px; background: rgba(255,255,255,0.15); border-radius: 2px; overflow: hidden; }
+.pf { height: 100%; background: var(–yellow); border-radius: 2px; transition: width 0.5s ease; }
+.pp { font-size: 0.82rem; font-weight: 800; color: var(–yellow); min-width: 32px; text-align: right; }
+
+/* LAYOUT */
+.layout { display: grid; grid-template-columns: 270px 1fr; min-height: calc(100vh - 240px); }
+
+/* SIDEBAR */
+.sidebar {
+background: var(–white);
+border-right: 1px solid var(–border);
+padding: 24px 0;
+position: sticky; top: 0;
+height: 100vh; overflow-y: auto;
+}
+
+.sidebar::-webkit-scrollbar { width: 3px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(–blue-mid-light); }
+
+.mod-grp { margin-bottom: 4px; }
+
+.mod-hd {
+display: flex; align-items: center; justify-content: space-between;
+padding: 9px 20px;
+}
+
+.mod-nm { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(–muted); }
+.mod-tg { font-size: 0.64rem; font-weight: 700; background: var(–blue-light); color: var(–blue-mid); border-radius: 3px; padding: 2px 7px; }
+
+.les-b {
+width: 100%; display: flex; align-items: flex-start; gap: 10px;
+padding: 9px 20px 9px 24px;
+background: none; border: none; border-left: 3px solid transparent;
+cursor: pointer; text-align: left;
+font-family: ‘Plus Jakarta Sans’, sans-serif; font-size: 0.82rem;
+color: var(–ink2); transition: all 0.15s; line-height: 1.4;
+}
+
+.les-b:hover { background: var(–blue-light); color: var(–ink); }
+.les-b.active { background: var(–blue-light); border-left-color: var(–blue-mid); color: var(–blue-mid); font-weight: 700; }
+.les-b.done { color: var(–green); }
+.les-b.done .ld { color: var(–green); }
+.les-b.active .ld { color: var(–blue-mid); }
+.ld { flex-shrink: 0; margin-top: 2px; font-size: 0.68rem; color: var(–border); }
+
+/* CONTENT */
+.content { padding: 44px 52px; max-width: 860px; }
+
+/* LESSON PIECES */
+.lhd {
+margin-bottom: 32px; padding-bottom: 28px;
+border-bottom: 2px solid var(–border);
+animation: fadeUp 0.3s ease both;
+}
+
+.ltag {
+display: inline-block; background: var(–blue-light); color: var(–blue-mid);
+font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+text-transform: uppercase; padding: 4px 10px; border-radius: 4px; margin-bottom: 12px;
+}
+
+.ltitle {
+font-family: ‘Fraunces’, serif;
+font-size: clamp(1.5rem, 3vw, 2.3rem); font-weight: 700;
+color: var(–ink); line-height: 1.1;
+}
+
+.ldesc { margin-top: 10px; font-size: 0.97rem; color: var(–muted); line-height: 1.75; }
+
+.sec { margin-bottom: 34px; animation: fadeUp 0.3s ease both; }
+
+.stitle {
+font-size: 0.67rem; font-weight: 800; letter-spacing: 0.16em;
+text-transform: uppercase; color: var(–blue-mid); margin-bottom: 14px;
+display: flex; align-items: center; gap: 10px;
+}
+
+.stitle::after { content: ‘’; flex: 1; height: 1px; background: var(–border); }
+
+.body { font-size: 0.95rem; line-height: 1.85; color: var(–ink2); }
+.body strong { color: var(–ink); font-weight: 700; }
+
+/* VOCAB CARD — special for language course */
+.vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin-top: 12px; }
+
+.vcard {
+background: var(–card); border: 1.5px solid var(–border);
+border-radius: 10px; padding: 14px 16px;
+transition: all 0.2s; cursor: default;
+}
+
+.vcard:hover { border-color: var(–blue-mid); box-shadow: 0 4px 14px rgba(35,80,168,0.1); transform: translateY(-1px); }
+
+.vpt { font-family: ‘Fraunces’, serif; font-size: 1.05rem; font-weight: 700; color: var(–blue-mid); margin-bottom: 2px; }
+.ves { font-size: 0.82rem; color: var(–ink2); }
+.vpron { font-size: 0.72rem; color: var(–muted); margin-top: 3px; font-style: italic; }
+
+/* PHRASE BOX */
+.phrase-list { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+
+.phrase-item {
+display: grid; grid-template-columns: 1fr 1fr;
+gap: 0; border: 1.5px solid var(–border);
+border-radius: 8px; overflow: hidden;
+}
+
+.phrase-pt { background: var(–blue-light); padding: 10px 14px; font-weight: 700; font-size: 0.88rem; color: var(–blue); border-right: 1px solid var(–border); }
+.phrase-es { background: var(–white); padding: 10px 14px; font-size: 0.88rem; color: var(–ink2); }
+
+/* GRAMMAR BOX */
+.grammar {
+background: var(–ink); color: white;
+border-radius: 12px; padding: 22px 24px; margin: 16px 0;
+position: relative; overflow: hidden;
+}
+
+.grammar::before {
+content: ‘’; position: absolute;
+top: -40px; right: -40px;
+width: 120px; height: 120px;
+background: var(–blue-mid); opacity: 0.3;
+border-radius: 50%;
+}
+
+.glabel { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(–yellow); font-weight: 700; margin-bottom: 10px; }
+.gtext { font-size: 0.9rem; line-height: 1.85; color: #dde8ff; }
+.gtext .ph { color: var(–yellow); font-style: italic; }
+.gtext strong { color: white; }
+
+/* CARDS */
+.g2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 14px; margin-top: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-top: 14px; }
 
 .card {
-  background: #1c1c1c;
-  padding: 20px;
-  border-radius: 12px;
-  max-width: 400px;
-  margin: auto;
+background: var(–card); border: 1.5px solid var(–border);
+border-radius: 10px; padding: 18px; transition: all 0.2s;
 }
 
-button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 8px;
-  background: #ff6600;
-  color: white;
-  font-size: 16px;
+.card:hover { border-color: var(–blue-mid); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(35,80,168,0.08); }
+.ci { font-size: 1.5rem; margin-bottom: 8px; }
+.ct { font-weight: 700; font-size: 0.88rem; color: var(–ink); margin-bottom: 4px; }
+.cd { font-size: 0.79rem; color: var(–muted); line-height: 1.55; }
+
+/* CALLOUT */
+.callout { border-radius: 10px; padding: 16px 20px; margin: 18px 0; }
+.c-tip { background: var(–yellow-light); border-left: 3px solid var(–yellow); }
+.c-blue { background: var(–blue-light); border-left: 3px solid var(–blue-mid); }
+.c-good { background: var(–green-light); border-left: 3px solid var(–green); }
+.c-warn { background: var(–red-light); border-left: 3px solid var(–red); }
+
+.clabel { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+.c-tip .clabel { color: #a07800; }
+.c-blue .clabel { color: var(–blue-mid); }
+.c-good .clabel { color: var(–green); }
+.c-warn .clabel { color: var(–red); }
+.callout p { font-size: 0.88rem; color: var(–ink2); line-height: 1.65; }
+
+/* LIST */
+.lst { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+.lst li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.92rem; color: var(–ink2); line-height: 1.65; }
+.lst li::before { content: ‘→’; color: var(–blue-mid); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+/* TABLE */
+.tw { overflow-x: auto; margin: 14px 0; border: 1.5px solid var(–border); border-radius: 10px; overflow: hidden; }
+table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+th { background: var(–blue); color: white; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 11px 16px; text-align: left; }
+td { padding: 10px 16px; border-bottom: 1px solid var(–border); color: var(–ink2); vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(–blue-light); }
+
+/* NAV */
+.lnav { display: flex; justify-content: space-between; align-items: center; margin-top: 52px; padding-top: 28px; border-top: 2px solid var(–border); }
+
+.nbtn {
+display: flex; align-items: center; gap: 8px;
+background: var(–white); border: 1.5px solid var(–border);
+border-radius: 8px; padding: 11px 18px;
+cursor: pointer; color: var(–ink2);
+font-family: ‘Plus Jakarta Sans’, sans-serif; font-size: 0.875rem; font-weight: 600;
+transition: all 0.15s;
 }
-.hidden { display:none; }
+
+.nbtn:hover { border-color: var(–blue-mid); color: var(–blue-mid); }
+.nbtn:disabled { opacity: 0.3; cursor: not-allowed; }
+.nbtn:disabled:hover { border-color: var(–border); color: var(–ink2); }
+.nbtn.primary { background: var(–blue-mid); color: white; border-color: var(–blue-mid); }
+.nbtn.primary:hover { background: var(–blue); border-color: var(–blue); color: white; }
+
+.done-btn {
+display: block; width: 100%; margin-top: 24px;
+padding: 13px; background: transparent;
+border: 1.5px solid var(–border); border-radius: 8px;
+color: var(–muted);
+font-family: ‘Plus Jakarta Sans’, sans-serif; font-size: 0.85rem; font-weight: 700;
+letter-spacing: 0.05em; cursor: pointer; transition: all 0.2s; text-transform: uppercase;
+}
+
+.done-btn:hover { border-color: var(–green); color: var(–green); background: var(–green-light); }
+.done-btn.done { border-color: var(–green); color: var(–green); background: var(–green-light); }
+
+@keyframes drop { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 768px) {
+.layout { grid-template-columns: 1fr; }
+.sidebar { position: relative; height: auto; border-right: none; border-bottom: 1px solid var(–border); }
+.content { padding: 28px 20px; }
+.hero { padding: 36px 20px 0; }
+.pbar-wrap { padding: 12px 20px; }
+.phrase-item { grid-template-columns: 1fr; }
+.phrase-pt { border-right: none; border-bottom: 1px solid var(–border); }
+}
 </style>
-</head>
 
+</head>
 <body>
 
-<div class="card" id="step1">
-  <h2>Trabaja 10x más rápido con IA ⚡</h2>
-  <p>Aprende en 3 minutos</p>
-  <button onclick="next(2)">Empezar</button>
+<div class="hero">
+  <div class="hero-top">
+    <span class="brand">RUTA360</span>
+    <span class="flag">🇧🇷</span>
+    <span class="lang-badge">IDIOMAS</span>
+  </div>
+  <h1>Portugués<br><em>Básico</em></h1>
+  <p class="hero-sub">Aprende el idioma más hablado de Sudamérica y abre las puertas al mercado laboral brasileño desde Costa Rica.</p>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-num">4</div><div class="hstat-label">Módulos</div></div>
+    <div class="hstat"><div class="hstat-num">16</div><div class="hstat-label">Lecciones</div></div>
+    <div class="hstat"><div class="hstat-num">~4h</div><div class="hstat-label">Duración</div></div>
+    <div class="hstat"><div class="hstat-num">A1</div><div class="hstat-label">Nivel</div></div>
+  </div>
 </div>
 
-<div class="card hidden" id="step2">
-  <h3>Problema común 😓</h3>
-  <p>Pasas horas escribiendo mensajes o contenido.</p>
-  <button onclick="next(3)">Continuar</button>
+<div class="pbar-wrap">
+  <span class="pl">Progreso</span>
+  <div class="pb"><div class="pf" id="pf" style="width:0%"></div></div>
+  <span class="pp" id="pp">0%</span>
 </div>
 
-<div class="card hidden" id="step3">
-  <h3>Solución 🤖</h3>
-  <p>La IA puede hacerlo por ti en segundos.</p>
-  <button onclick="next(4)">Ver ejemplo</button>
-</div>
-
-<div class="card hidden" id="step4">
-  <h3>Ejemplo real</h3>
-  <p><b>Prompt:</b></p>
-  <p>"Escribe un mensaje para vender un curso de inglés"</p>
-  <button onclick="next(5)">Ver resultado</button>
-</div>
-
-<div class="card hidden" id="step5">
-  <h3>Resultado 🚀</h3>
-  <p>“Aprende inglés en 90 días con nuestro sistema guiado…”</p>
-  <button onclick="next(6)">Siguiente</button>
-</div>
-
-<div class="card hidden" id="step6">
-  <h3>Conclusión</h3>
-  <p>Esto es solo una pequeña parte de lo que puedes hacer con IA.</p>
-  <button onclick="restart()">Repetir</button>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content" id="content"></main>
 </div>
 
 <script>
-function next(step){
-  document.querySelectorAll('.card').forEach(el=>el.classList.add('hidden'));
-  document.getElementById('step'+step).classList.remove('hidden');
+const MODS = [
+  {
+    title: 'Primeros Pasos',
+    lessons: [
+      {
+        id: 'l1',
+        title: '¿Por qué aprender portugués?',
+        html: () => `
+          <div class="lhd">
+            <span class="ltag">Módulo 1 · Lección 1</span>
+            <h2 class="ltitle">¿Por qué Aprender Portugués?</h2>
+            <p class="ldesc">El portugués es la 5ta lengua más hablada del mundo y la puerta de entrada al mercado brasileño, el más grande de América Latina.</p>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">El portugués en números</div>
+            <div class="g2">
+              <div class="card"><div class="ci">🌍</div><div class="ct">260 millones</div><div class="cd">hablantes nativos en el mundo. 5to idioma más hablado.</div></div>
+              <div class="card"><div class="ci">🇧🇷</div><div class="ct">Brasil</div><div class="cd">La economía más grande de LATAM. 215 millones de personas.</div></div>
+              <div class="card"><div class="ci">💼</div><div class="ct">Mercado laboral</div><div class="cd">Empresas brasileñas con presencia en Costa Rica buscan bilingües español-portugués.</div></div>
+              <div class="card"><div class="ci">📈</div><div class="ct">Baja oferta</div><div class="cd">Muy pocos costarricenses hablan portugués. Alta demanda, poca competencia.</div></div>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Ventaja para hispanohablantes</div>
+            <p class="body">El español y el portugués son primos lingüísticos. Comparten el <strong>89% del vocabulario base</strong>, gramática similar y estructura de frases parecida. Un hispanohablante aprende portugués mucho más rápido que cualquier otro idioma.</p>
+            <div class="callout c-good" style="margin-top:16px">
+              <div class="clabel">✅ Buena noticia</div>
+              <p>Si ya hablas español, ya sabes portugués a medias sin saberlo. Palabras como <strong>casa, trabalho, família, música, importante</strong> — son iguales o casi iguales en ambos idiomas.</p>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Diferencia entre portugués de Brasil y Portugal</div>
+            <div class="tw">
+              <table>
+                <thead><tr><th></th><th>Brasil 🇧🇷</th><th>Portugal 🇵🇹</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Pronunciación</strong></td><td>Más abierta, vocal, musical</td><td>Más cerrada y rápida</td></tr>
+                  <tr><td><strong>Velocidad</strong></td><td>Más lenta y clara</td><td>Más rápida</td></tr>
+                  <tr><td><strong>Relevancia LATAM</strong></td><td>Alta — mercado regional</td><td>Media — más negocios globales</td></tr>
+                  <tr><td><strong>Este curso</strong></td><td>✅ Enfoque principal</td><td>Menciones ocasionales</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 'l2',
+        title: 'Pronunciación y sonidos clave',
+        html: () => `
+          <div class="lhd">
+            <span class="ltag">Módulo 1 · Lección 2</span>
+            <h2 class="ltitle">Pronunciación y Sonidos Clave</h2>
+            <p class="ldesc">El mayor reto del portugués para hispanohablantes es la pronunciación. Estos son los sonidos que más confunden y cómo dominarlos.</p>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Las 5 diferencias de pronunciación más importantes</div>
+            <div class="tw">
+              <table>
+                <thead><tr><th>Sonido</th><th>En portugués</th><th>Ejemplo</th><th>Se pronuncia</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>ã / ão</strong></td><td>Sonido nasal (como "an" con nariz tapada)</td><td>irmão (hermano)</td><td>"ir-MAWN"</td></tr>
+                  <tr><td><strong>lh</strong></td><td>Como la "ll" del español rioplatense</td><td>trabalho (trabajo)</td><td>"tra-BA-lyo"</td></tr>
+                  <tr><td><strong>nh</strong></td><td>Como la "ñ" del español</td><td>amanhã (mañana)</td><td>"a-ma-NYA"</td></tr>
+                  <tr><td><strong>r (inicio)</strong></td><td>Como "j" suave en Brasil</td><td>Rio de Janeiro</td><td>"HIO de ja-NEI-ro"</td></tr>
+                  <tr><td><strong>s (entre vocales)</strong></td><td>Como "z"</td><td>casa (casa)</td><td>"CA-za"</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Palabras que se escriben igual pero suenan diferente</div>
+            <div class="vocab-grid">
+              <div class="vcard"><div class="vpt">casa</div><div class="ves">casa</div><div class="vpron">CA-za (s→z)</div></div>
+              <div class="vcard"><div class="vpt">mesa</div><div class="ves">mesa</div><div class="vpron">ME-za (s→z)</div></div>
+              <div class="vcard"><div class="vpt">rosa</div><div class="ves">rosa</div><div class="vpron">HO-za (r+s→z)</div></div>
+              <div class="vcard"><div class="vpt">hotel</div><div class="ves">hotel</div><div class="vpron">o-TEU (l→u)</div></div>
+            </div>
+          </div>
+
+          <div class="callout c-tip">
+            <div class="clabel">💡 Tip de pronunciación</div>
+            <p>En el portugués brasileño, la vocal "o" al final de palabra suena como "u". Por eso <strong>banco</strong> suena "BAN-ku" y <strong>livro</strong> (libro) suena "LI-vru". ¡Practícalo en voz alta!</p>
+          </div>
+        `
+      },
+      {
+        id: 'l3',
+        title: 'Saludos y presentaciones básicas',
+        html: () => `
+          <div class="lhd">
+            <span class="ltag">Módulo 1 · Lección 3</span>
+            <h2 class="ltitle">Saludos y Presentaciones Básicas</h2>
+            <p class="ldesc">Las primeras palabras que usarás en cualquier conversación en portugués. Memoriza estas y ya puedes presentarte en Brasil.</p>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Saludos esenciales</div>
+            <div class="phrase-list">
+              <div class="phrase-item"><div class="phrase-pt">Olá / Oi</div><div class="phrase-es">Hola (formal / informal)</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Bom dia</div><div class="phrase-es">Buenos días</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Boa tarde</div><div class="phrase-es">Buenas tardes</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Boa noite</div><div class="phrase-es">Buenas noches</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Tudo bem?</div><div class="phrase-es">¿Todo bien? / ¿Cómo estás?</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Tudo bem, obrigado(a)!</div><div class="phrase-es">¡Todo bien, gracias!</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Até logo / Tchau</div><div class="phrase-es">Hasta luego / Chao</div></div>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Presentarte en portugués</div>
+            <div class="grammar">
+              <div class="glabel">Frases de presentación</div>
+              <div class="gtext">
+                Meu nome é <span class="ph">[tu nombre]</span>. → Mi nombre es ___.<br>
+                Eu sou de <span class="ph">[Costa Rica / San José]</span>. → Soy de ___.<br>
+                Eu tenho <span class="ph">[22]</span> anos. → Tengo ___ años.<br>
+                Eu trabalho como <span class="ph">[profesión]</span>. → Trabajo como ___.<br>
+                Prazer em conhecê-lo(a)! → ¡Mucho gusto en conocerte!
+              </div>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Nota cultural importante</div>
+            <div class="callout c-blue">
+              <div class="clabel">🇧🇷 Cultura</div>
+              <p>Los brasileños son muy cálidos y expresivos. Un "tudo bem?" es obligatorio al saludar — incluso en contextos formales. Responder solo "bem" sin preguntar de vuelta se considera descortés. Siempre pregunta: <strong>"E você, tudo bem?"</strong> (¿Y tú, todo bien?)</p>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 'l4',
+        title: 'Números, fechas y horas',
+        html: () => `
+          <div class="lhd">
+            <span class="ltag">Módulo 1 · Lección 4</span>
+            <h2 class="ltitle">Números, Fechas y Horas</h2>
+            <p class="ldesc">Esenciales para cualquier conversación laboral o cotidiana. Los números en portugués son muy similares al español.</p>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Números del 1 al 20</div>
+            <div class="vocab-grid">
+              <div class="vcard"><div class="vpt">um / uma</div><div class="ves">1</div></div>
+              <div class="vcard"><div class="vpt">dois / duas</div><div class="ves">2</div></div>
+              <div class="vcard"><div class="vpt">três</div><div class="ves">3</div></div>
+              <div class="vcard"><div class="vpt">quatro</div><div class="ves">4</div></div>
+              <div class="vcard"><div class="vpt">cinco</div><div class="ves">5</div></div>
+              <div class="vcard"><div class="vpt">seis</div><div class="ves">6</div></div>
+              <div class="vcard"><div class="vpt">sete</div><div class="ves">7</div></div>
+              <div class="vcard"><div class="vpt">oito</div><div class="ves">8</div></div>
+              <div class="vcard"><div class="vpt">nove</div><div class="ves">9</div></div>
+              <div class="vcard"><div class="vpt">dez</div><div class="ves">10</div></div>
+              <div class="vcard"><div class="vpt">vinte</div><div class="ves">20</div></div>
+              <div class="vcard"><div class="vpt">cem</div><div class="ves">100</div></div>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Preguntar y decir la hora</div>
+            <div class="phrase-list">
+              <div class="phrase-item"><div class="phrase-pt">Que horas são?</div><div class="phrase-es">¿Qué hora es?</div></div>
+              <div class="phrase-item"><div class="phrase-pt">São duas horas.</div><div class="phrase-es">Son las dos.</div></div>
+              <div class="phrase-item"><div class="phrase-pt">São nove e meia.</div><div class="phrase-es">Son las nueve y media.</div></div>
+              <div class="phrase-item"><div class="phrase-pt">A reunião é às três.</div><div class="phrase-es">La reunión es a las tres.</div></div>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Días de la semana</div>
+            <div class="vocab-grid">
+              <div class="vcard"><div class="vpt">segunda-feira</div><div class="ves">lunes</div></div>
+              <div class="vcard"><div class="vpt">terça-feira</div><div class="ves">martes</div></div>
+              <div class="vcard"><div class="vpt">quarta-feira</div><div class="ves">miércoles</div></div>
+              <div class="vcard"><div class="vpt">quinta-feira</div><div class="ves">jueves</div></div>
+              <div class="vcard"><div class="vpt">sexta-feira</div><div class="ves">viernes</div></div>
+              <div class="vcard"><div class="vpt">sábado</div><div class="ves">sábado</div></div>
+              <div class="vcard"><div class="vpt">domingo</div><div class="ves">domingo</div></div>
+            </div>
+          </div>
+        `
+      }
+    ]
+  },
+  {
+    title: 'Conversación Cotidiana',
+    lessons: [
+      {
+        id: 'l5',
+        title: 'En el trabajo: frases esenciales',
+        html: () => `
+          <div class="lhd">
+            <span class="ltag">Módulo 2 · Lección 1</span>
+            <h2 class="ltitle">En el Trabajo: Frases Esenciales</h2>
+            <p class="ldesc">Las frases más importantes para comunicarte en un entorno laboral con colegas, clientes o jefes brasileños.</p>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Vocabulario laboral básico</div>
+            <div class="vocab-grid">
+              <div class="vcard"><div class="vpt">o trabalho</div><div class="ves">el trabajo</div></div>
+              <div class="vcard"><div class="vpt">a empresa</div><div class="ves">la empresa</div></div>
+              <div class="vcard"><div class="vpt">o chefe / a chefa</div><div class="ves">el jefe / la jefa</div></div>
+              <div class="vcard"><div class="vpt">o colega</div><div class="ves">el compañero</div></div>
+              <div class="vcard"><div class="vpt">a reunião</div><div class="ves">la reunión</div></div>
+              <div class="vcard"><div class="vpt">o prazo</div><div class="ves">el plazo / deadline</div></div>
+              <div class="vcard"><div class="vpt">o relatório</div><div class="ves">el reporte / informe</div></div>
+              <div class="vcard"><div class="vpt">o cliente</div><div class="ves">el cliente</div></div>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Frases de uso diario en la oficina</div>
+            <div class="phrase-list">
+              <div class="phrase-item"><div class="phrase-pt">Bom dia a todos!</div><div class="phrase-es">¡Buenos días a todos!</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Podemos começar a reunião?</div><div class="phrase-es">¿Podemos comenzar la reunión?</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Não entendi. Pode repetir?</div><div class="phrase-es">No entendí. ¿Puede repetir?</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Pode falar mais devagar?</div><div class="phrase-es">¿Puede hablar más despacio?</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Qual é o prazo?</div><div class="phrase-es">¿Cuál es el plazo?</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Vou enviar por e-mail.</div><div class="phrase-es">Lo voy a enviar por correo.</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Estou trabalhando nisso.</div><div class="phrase-es">Estoy trabajando en eso.</div></div>
+            </div>
+          </div>
+
+          <div class="callout c-tip">
+            <div class="clabel">💡 Frase de supervivencia</div>
+            <p>"<strong>Pode falar mais devagar, por favor? Estou aprendendo português.</strong>" (¿Puede hablar más despacio, por favor? Estoy aprendiendo portugués.) Los brasileños SIEMPRE responden con paciencia y entusiasmo cuando alguien intenta hablar su idioma.</p>
+          </div>
+        `
+      },
+      {
+        id: 'l6',
+        title: 'Verbos esenciales y conjugación básica',
+        html: () => `
+          <div class="lhd">
+            <span class="ltag">Módulo 2 · Lección 2</span>
+            <h2 class="ltitle">Verbos Esenciales y Conjugación Básica</h2>
+            <p class="ldesc">Con 20 verbos dominados puedes expresar el 80% de lo que necesitas en el día a día. Aprende los más importantes y cómo conjugarlos.</p>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Los 15 verbos más usados</div>
+            <div class="vocab-grid">
+              <div class="vcard"><div class="vpt">ser / estar</div><div class="ves">ser / estar</div></div>
+              <div class="vcard"><div class="vpt">ter</div><div class="ves">tener</div></div>
+              <div class="vcard"><div class="vpt">fazer</div><div class="ves">hacer</div></div>
+              <div class="vcard"><div class="vpt">ir</div><div class="ves">ir</div></div>
+              <div class="vcard"><div class="vpt">querer</div><div class="ves">querer</div></div>
+              <div class="vcard"><div class="vpt">poder</div><div class="ves">poder</div></div>
+              <div class="vcard"><div class="vpt">saber</div><div class="ves">saber</div></div>
+              <div class="vcard"><div class="vpt">falar</div><div class="ves">hablar</div></div>
+              <div class="vcard"><div class="vpt">trabalhar</div><div class="ves">trabajar</div></div>
+              <div class="vcard"><div class="vpt">precisar</div><div class="ves">necesitar</div></div>
+              <div class="vcard"><div class="vpt">gostar</div><div class="ves">gustar (de)</div></div>
+              <div class="vcard"><div class="vpt">entender</div><div class="ves">entender</div></div>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Conjugación del presente — verbos regulares</div>
+            <div class="grammar">
+              <div class="glabel">Patrón -AR (falar = hablar)</div>
+              <div class="gtext">
+                eu <strong>falo</strong> — yo hablo<br>
+                você <strong>fala</strong> — tú/usted habla<br>
+                ele/ela <strong>fala</strong> — él/ella habla<br>
+                nós <strong>falamos</strong> — nosotros hablamos<br>
+                vocês <strong>falam</strong> — ustedes hablan<br>
+                eles/elas <strong>falam</strong> — ellos/ellas hablan
+              </div>
+            </div>
+          </div>
+
+          <div class="callout c-blue">
+            <div class="clabel">💡 Simplificación brasileña</div>
+            <p>En Brasil, se usa <strong>"você"</strong> para decir "tú" en casi todos los contextos — formal e informal. Es mucho más simple que en España donde "usted/tú" tienen distintas conjugaciones. Esto hace el portugués brasileño más fácil de aprender.</p>
+          </div>
+        `
+      },
+      {
+        id: 'l7',
+        title: 'De compras y servicios',
+        html: () => `
+          <div class="lhd">
+            <span class="ltag">Módulo 2 · Lección 3</span>
+            <h2 class="ltitle">De Compras y Servicios</h2>
+            <p class="ldesc">Frases para comprar, preguntar precios y usar servicios en portugués — útiles tanto en viajes como con clientes o proveedores brasileños.</p>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Vocabulario de compras</div>
+            <div class="vocab-grid">
+              <div class="vcard"><div class="vpt">o preço</div><div class="ves">el precio</div></div>
+              <div class="vcard"><div class="vpt">caro / barato</div><div class="ves">caro / barato</div></div>
+              <div class="vcard"><div class="vpt">o desconto</div><div class="ves">el descuento</div></div>
+              <div class="vcard"><div class="vpt">pagar</div><div class="ves">pagar</div></div>
+              <div class="vcard"><div class="vpt">o cartão</div><div class="ves">la tarjeta</div></div>
+              <div class="vcard"><div class="vpt">o dinheiro</div><div class="ves">el dinero</div></div>
+              <div class="vcard"><div class="vpt">a nota fiscal</div><div class="ves">la factura / recibo</div></div>
+              <div class="vcard"><div class="vpt">troco</div><div class="ves">el cambio / vuelto</div></div>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Diálogo de compra típico</div>
+            <div class="phrase-list">
+              <div class="phrase-item"><div class="phrase-pt">Quanto custa isso?</div><div class="phrase-es">¿Cuánto cuesta esto?</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Tem desconto?</div><div class="phrase-es">¿Hay descuento?</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Aceita cartão de crédito?</div><div class="phrase-es">¿Acepta tarjeta de crédito?</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Pode me dar a nota fiscal?</div><div class="phrase-es">¿Me puede dar la factura?</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Vou levar!</div><div class="phrase-es">¡Me lo llevo!</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Não, obrigado(a).</div><div class="phrase-es">No, gracias.</div></div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 'l8',
+        title: 'Expresar necesidades y preferencias',
+        html: () => `
+          <div class="lhd">
+            <span class="ltag">Módulo 2 · Lección 4</span>
+            <h2 class="ltitle">Expresar Necesidades y Preferencias</h2>
+            <p class="ldesc">Aprende a decir lo que quieres, lo que necesitas y lo que te gusta en portugués — esencial para conversaciones reales.</p>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Estructuras clave</div>
+            <div class="grammar">
+              <div class="glabel">Expresar deseos y necesidades</div>
+              <div class="gtext">
+                Eu <strong>quero</strong> <span class="ph">[café / trabalhar / ajuda]</span>. → Quiero ___.<br>
+                Eu <strong>preciso</strong> de <span class="ph">[tempo / informação]</span>. → Necesito ___.<br>
+                Eu <strong>gosto</strong> de <span class="ph">[música / trabalhar aqui]</span>. → Me gusta ___.<br>
+                Eu <strong>não gosto</strong> de <span class="ph">[reuniões longas]</span>. → No me gusta ___.<br>
+                Eu <strong>prefiro</strong> <span class="ph">[trabalhar em casa]</span>. → Prefiero ___.<br>
+                Eu <strong>posso</strong> <span class="ph">[ajudar / enviar]</span>. → Puedo ___.
+              </div>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Frases de uso frecuente</div>
+            <div class="phrase-list">
+              <div class="phrase-item"><div class="phrase-pt">Eu gostaria de falar com...</div><div class="phrase-es">Me gustaría hablar con...</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Preciso de ajuda, por favor.</div><div class="phrase-es">Necesito ayuda, por favor.</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Posso fazer uma pergunta?</div><div class="phrase-es">¿Puedo hacer una pregunta?</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Prefiro receber por e-mail.</div><div class="phrase-es">Prefiero recibirlo por correo.</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Não consigo entender.</div><div class="phrase-es">No logro entender / No puedo entender.</div></div>
+            </div>
+          </div>
+        `
+      }
+    ]
+  },
+  {
+    title: 'Gramática Práctica',
+    lessons: [
+      {
+        id: 'l9',
+        title: 'Artículos y género de las palabras',
+        html: () => `
+          <div class="lhd">
+            <span class="ltag">Módulo 3 · Lección 1</span>
+            <h2 class="ltitle">Artículos y Género de las Palabras</h2>
+            <p class="ldesc">El portugués funciona igual que el español con género masculino y femenino. Aprende las reglas básicas y las excepciones más comunes.</p>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Artículos definidos e indefinidos</div>
+            <div class="tw">
+              <table>
+                <thead><tr><th></th><th>Masculino</th><th>Femenino</th><th>Equivalente</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Definido singular</strong></td><td>o (o homem)</td><td>a (a mulher)</td><td>el / la</td></tr>
+                  <tr><td><strong>Definido plural</strong></td><td>os (os homens)</td><td>as (as mulheres)</td><td>los / las</td></tr>
+                  <tr><td><strong>Indefinido singular</strong></td><td>um (um livro)</td><td>uma (uma mesa)</td><td>un / una</td></tr>
+                  <tr><td><strong>Indefinido plural</strong></td><td>uns</td><td>umas</td><td>unos / unas</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Regla general de género</div>
+            <ul class="lst">
+              <li>Palabras terminadas en <strong>-o</strong> generalmente son masculinas: o livro, o trabalho, o amigo</li>
+              <li>Palabras terminadas en <strong>-a</strong> generalmente son femeninas: a casa, a mesa, a amiga</li>
+              <li>Palabras terminadas en <strong>-ão</strong> pueden ser ambas: o coração (m) / a canção (f)</li>
+              <li>Palabras terminadas en <strong>-ade / -gem</strong> son femeninas: a cidade, a viagem</li>
+            </ul>
+          </div>
+
+          <div class="callout c-blue">
+            <div class="clabel">💡 Diferencia con el español</div>
+            <p>En portugués se usa el artículo definido antes de nombres propios con más frecuencia: <strong>"A Maria chegou"</strong> (María llegó) o <strong>"O Brasil é grande"</strong>. En español esto sonaría raro, pero en portugués es completamente normal.</p>
+          </div>
+        `
+      },
+      {
+        id: 'l10',
+        title: 'Preposiciones esenciales',
+        html: () => `
+          <div class="lhd">
+            <span class="ltag">Módulo 3 · Lección 2</span>
+            <h2 class="ltitle">Preposiciones Esenciales</h2>
+            <p class="ldesc">Las preposiciones son el pegamento del idioma. Domina las más importantes y evita los errores más comunes.</p>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Preposiciones básicas</div>
+            <div class="vocab-grid">
+              <div class="vcard"><div class="vpt">em</div><div class="ves">en / dentro de</div></div>
+              <div class="vcard"><div class="vpt">de</div><div class="ves">de / desde</div></div>
+              <div class="vcard"><div class="vpt">para</div><div class="ves">para / hacia</div></div>
+              <div class="vcard"><div class="vpt">por</div><div class="ves">por</div></div>
+              <div class="vcard"><div class="vpt">com</div><div class="ves">con</div></div>
+              <div class="vcard"><div class="vpt">sem</div><div class="ves">sin</div></div>
+              <div class="vcard"><div class="vpt">sobre</div><div class="ves">sobre / acerca de</div></div>
+              <div class="vcard"><div class="vpt">entre</div><div class="ves">entre</div></div>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Contracciones importantes</div>
+            <div class="tw">
+              <table>
+                <thead><tr><th>Preposición + Artículo</th><th>Resultado</th><th>Ejemplo</th></tr></thead>
+                <tbody>
+                  <tr><td>de + o</td><td><strong>do</strong></td><td>do trabalho (del trabajo)</td></tr>
+                  <tr><td>de + a</td><td><strong>da</strong></td><td>da empresa (de la empresa)</td></tr>
+                  <tr><td>em + o</td><td><strong>no</strong></td><td>no escritório (en la oficina)</td></tr>
+                  <tr><td>em + a</td><td><strong>na</strong></td><td>na reunião (en la reunión)</td></tr>
+                  <tr><td>a + o</td><td><strong>ao</strong></td><td>ao cliente (al cliente)</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 'l11',
+        title: 'Tiempo pasado: lo que ya ocurrió',
+        html: () => `
+          <div class="lhd">
+            <span class="ltag">Módulo 3 · Lección 3</span>
+            <h2 class="ltitle">Tiempo Pasado: Lo que Ya Ocurrió</h2>
+            <p class="ldesc">Aprende a contar lo que hiciste ayer, la semana pasada o en tu trabajo anterior — fundamental para entrevistas y conversaciones reales.</p>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Pretérito perfeito (pasado simple)</div>
+            <div class="grammar">
+              <div class="glabel">Conjugación — falar (hablar)</div>
+              <div class="gtext">
+                eu <strong>falei</strong> — yo hablé<br>
+                você <strong>falou</strong> — tú/usted habló<br>
+                ele/ela <strong>falou</strong> — él/ella habló<br>
+                nós <strong>falamos</strong> — nosotros hablamos<br>
+                vocês <strong>falaram</strong> — ustedes hablaron<br>
+                eles <strong>falaram</strong> — ellos hablaron
+              </div>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Expresiones de tiempo pasado</div>
+            <div class="vocab-grid">
+              <div class="vcard"><div class="vpt">ontem</div><div class="ves">ayer</div></div>
+              <div class="vcard"><div class="vpt">anteontem</div><div class="ves">antes de ayer</div></div>
+              <div class="vcard"><div class="vpt">semana passada</div><div class="ves">la semana pasada</div></div>
+              <div class="vcard"><div class="vpt">mês passado</div><div class="ves">el mes pasado</div></div>
+              <div class="vcard"><div class="vpt">ano passado</div><div class="ves">el año pasado</div></div>
+              <div class="vcard"><div class="vpt">já</div><div class="ves">ya</div></div>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Frases de entrevista en pasado</div>
+            <div class="phrase-list">
+              <div class="phrase-item"><div class="phrase-pt">Eu trabalhei em vendas por dois anos.</div><div class="phrase-es">Trabajé en ventas por dos años.</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Eu estudei administração.</div><div class="phrase-es">Estudié administración.</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Aprendi muito nessa empresa.</div><div class="phrase-es">Aprendí mucho en esa empresa.</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Já trabalhei com clientes internacionais.</div><div class="phrase-es">Ya trabajé con clientes internacionales.</div></div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 'l12',
+        title: 'Hacer preguntas en portugués',
+        html: () => `
+          <div class="lhd">
+            <span class="ltag">Módulo 3 · Lección 4</span>
+            <h2 class="ltitle">Hacer Preguntas en Portugués</h2>
+            <p class="ldesc">Las palabras interrogativas son tu llave para cualquier conversación. Con ellas puedes preguntar todo lo que necesitas saber.</p>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Palabras interrogativas</div>
+            <div class="vocab-grid">
+              <div class="vcard"><div class="vpt">O que?</div><div class="ves">¿Qué?</div></div>
+              <div class="vcard"><div class="vpt">Quem?</div><div class="ves">¿Quién?</div></div>
+              <div class="vcard"><div class="vpt">Onde?</div><div class="ves">¿Dónde?</div></div>
+              <div class="vcard"><div class="vpt">Quando?</div><div class="ves">¿Cuándo?</div></div>
+              <div class="vcard"><div class="vpt">Como?</div><div class="ves">¿Cómo?</div></div>
+              <div class="vcard"><div class="vpt">Por quê?</div><div class="ves">¿Por qué?</div></div>
+              <div class="vcard"><div class="vpt">Quanto?</div><div class="ves">¿Cuánto?</div></div>
+              <div class="vcard"><div class="vpt">Qual?</div><div class="ves">¿Cuál?</div></div>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Preguntas de uso diario</div>
+            <div class="phrase-list">
+              <div class="phrase-item"><div class="phrase-pt">O que você faz?</div><div class="phrase-es">¿A qué te dedicas? / ¿Qué haces?</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Onde você trabalha?</div><div class="phrase-es">¿Dónde trabajas?</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Quando começa a reunião?</div><div class="phrase-es">¿Cuándo empieza la reunión?</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Como posso te ajudar?</div><div class="phrase-es">¿Cómo puedo ayudarte?</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Qual é o seu e-mail?</div><div class="phrase-es">¿Cuál es tu correo?</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Por que você escolheu essa área?</div><div class="phrase-es">¿Por qué elegiste esa área?</div></div>
+            </div>
+          </div>
+        `
+      }
+    ]
+  },
+  {
+    title: 'Portugués Profesional',
+    lessons: [
+      {
+        id: 'l13',
+        title: 'Email y comunicación escrita',
+        html: () => `
+          <div class="lhd">
+            <span class="ltag">Módulo 4 · Lección 1</span>
+            <h2 class="ltitle">Email y Comunicación Escrita</h2>
+            <p class="ldesc">Aprende a redactar emails profesionales en portugués para comunicarte con clientes, proveedores o colegas brasileños.</p>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Estructura de un email profesional</div>
+            <div class="grammar">
+              <div class="glabel">Plantilla de email</div>
+              <div class="gtext">
+                <strong>Assunto:</strong> <span class="ph">Proposta comercial / Reunião / Orçamento</span><br><br>
+                <strong>Abertura:</strong><br>
+                Prezado(a) <span class="ph">[Nome]</span>, (Estimado/a)<br>
+                Espero que esteja bem. (Espero que esté bien.)<br><br>
+                <strong>Corpo:</strong><br>
+                Entro em contato para <span class="ph">[motivo]</span>.<br>
+                (Me pongo en contacto para ___)<br><br>
+                <strong>Fechamento:</strong><br>
+                Fico à disposição para qualquer dúvida.<br>
+                (Quedo a disposición para cualquier duda.)<br>
+                Atenciosamente, (Atentamente,)<br>
+                <span class="ph">[Seu nome]</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Frases útiles para emails</div>
+            <div class="phrase-list">
+              <div class="phrase-item"><div class="phrase-pt">Segue em anexo...</div><div class="phrase-es">Adjunto / Se adjunta...</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Conforme combinado...</div><div class="phrase-es">Tal como acordado...</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Aguardo seu retorno.</div><div class="phrase-es">Espero su respuesta.</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Em caso de dúvidas...</div><div class="phrase-es">En caso de dudas...</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Desde já, agradeço.</div><div class="phrase-es">Desde ya, agradezco.</div></div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 'l14',
+        title: 'Entrevista de trabajo en portugués',
+        html: () => `
+          <div class="lhd">
+            <span class="ltag">Módulo 4 · Lección 2</span>
+            <h2 class="ltitle">Entrevista de Trabajo en Portugués</h2>
+            <p class="ldesc">Las preguntas más comunes en entrevistas con empresas brasileñas y cómo responderlas con confianza.</p>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Preguntas típicas y cómo responder</div>
+            <div class="phrase-list">
+              <div class="phrase-item"><div class="phrase-pt">Fale sobre você.</div><div class="phrase-es">Háblame de ti. (Cuéntame sobre ti.)</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Quais são seus pontos fortes?</div><div class="phrase-es">¿Cuáles son tus puntos fuertes?</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Por que quer trabalhar aqui?</div><div class="phrase-es">¿Por qué quiere trabajar aquí?</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Onde se vê em 5 anos?</div><div class="phrase-es">¿Dónde se ve en 5 años?</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Qual é a sua pretensão salarial?</div><div class="phrase-es">¿Cuál es su pretensión salarial?</div></div>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Respuestas modelo</div>
+            <div class="grammar">
+              <div class="glabel">Para "Fale sobre você"</div>
+              <div class="gtext">
+                Meu nome é <span class="ph">[nombre]</span>. Sou de <span class="ph">[Costa Rica]</span> e trabalho na área de <span class="ph">[área]</span> há <span class="ph">[X]</span> anos. Tenho experiência em <span class="ph">[habilidade 1]</span> e <span class="ph">[habilidade 2]</span>. Estou buscando uma oportunidade para crescer profissionalmente e contribuir com uma empresa como esta.
+              </div>
+            </div>
+          </div>
+
+          <div class="callout c-good">
+            <div class="clabel">✅ Ventaja real</div>
+            <p>Un costarricense que habla portugués en una entrevista con empresa brasileña ya tiene el 50% del trabajo ganado. Es tan poco común que genera una impresión inmediata y memorable.</p>
+          </div>
+        `
+      },
+      {
+        id: 'l15',
+        title: 'Cultura brasileña para los negocios',
+        html: () => `
+          <div class="lhd">
+            <span class="ltag">Módulo 4 · Lección 3</span>
+            <h2 class="ltitle">Cultura Brasileña para los Negocios</h2>
+            <p class="ldesc">Conocer el idioma no es suficiente. Entender la cultura de negocios brasileña marca la diferencia entre una reunión exitosa y una confusa.</p>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Valores culturales en los negocios brasileños</div>
+            <div class="g2">
+              <div class="card"><div class="ci">🤝</div><div class="ct">Relaciones primero</div><div class="cd">Los brasileños hacen negocios con personas de confianza. Invertir en la relación antes de cerrar es esencial.</div></div>
+              <div class="card"><div class="ci">😊</div><div class="ct">Calidez y expresividad</div><div class="cd">Saludos físicos, conversación personal antes de los negocios. Lo formal frío puede interpretarse como desinterés.</div></div>
+              <div class="card"><div class="ci">⏰</div><div class="ct">Flexibilidad con el tiempo</div><div class="cd">Los plazos y reuniones pueden tener cierta flexibilidad. Confirmar siempre antes de reuniones importantes.</div></div>
+              <div class="card"><div class="ci">🍽️</div><div class="ct">Cultura de mesa</div><div class="cd">Las comidas de negocios son muy comunes. Aceptar invitaciones fortalece enormemente la relación.</div></div>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Frases que generan buena impresión</div>
+            <div class="phrase-list">
+              <div class="phrase-item"><div class="phrase-pt">Que legal! / Que bacana!</div><div class="phrase-es">¡Qué genial! / ¡Qué bueno! (muy brasileño)</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Com certeza!</div><div class="phrase-es">¡Por supuesto! / ¡Claro que sí!</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Que saudade!</div><div class="phrase-es">¡Cuánto te/lo extrañé! (sin equivalente exacto)</div></div>
+              <div class="phrase-item"><div class="phrase-pt">Fico feliz em te conhecer!</div><div class="phrase-es">¡Me alegra conocerte!</div></div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 'l16',
+        title: 'Tu plan de práctica continua',
+        html: () => `
+          <div class="lhd">
+            <span class="ltag">Módulo 4 · Lección 4</span>
+            <h2 class="ltitle">Tu Plan de Práctica Continua</h2>
+            <p class="ldesc">Aprender un idioma es un maratón, no un sprint. Este plan de práctica diaria de 20 minutos te llevará de básico a conversacional en 6 meses.</p>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Rutina diaria de 20 minutos</div>
+            <div class="g2">
+              <div class="card"><div class="ci">☀️</div><div class="ct">5 min — Vocabulario</div><div class="cd">5 palabras nuevas con Duolingo, Anki o tarjetas. Repite las de ayer.</div></div>
+              <div class="card"><div class="ci">🎧</div><div class="ct">10 min — Escucha</div><div class="cd">Podcast en portugués, música brasileña o un video corto en YouTube.</div></div>
+              <div class="card"><div class="ci">✍️</div><div class="ct">5 min — Producción</div><div class="cd">Escribe 3 frases sobre tu día en portugués. Usa ChatGPT para corregirlas.</div></div>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="stitle">Recursos gratuitos recomendados</div>
+            <ul class="lst">
+              <li><strong>Duolingo:</strong> Curso de portugués gratuito con gamificación. Ideal para vocabulario base.</li>
+              <li><strong>Spotify — música brasileña:</strong> Bossa nova, MPB, sertanejo. Aprende pronunciación sin esfuerzo.</li>
+              <li><strong>YouTube — Português para Hispanohablantes:</strong> Canales especializados en enseñar a hispanohablantes.</li>
+              <li><strong>ChatGPT:</strong> Practica conversación escrita, pide correcciones y traducciones instantáneas.</li>
+              <li><strong>Tandem / HelloTalk:</strong> Encuentra nativos brasileños para intercambio de idioma.</li>
+            </ul>
+          </div>
+
+          <div class="callout c-good" style="background:#eef3ff; border-color: var(--blue-mid);">
+            <div class="clabel" style="color:var(--blue-mid)">🎉 ¡Parabéns! (¡Felicitaciones!)</div>
+            <p>Completaste el curso de Portugués Básico. Ahora tienes las bases para comunicarte en contextos laborales y cotidianos. <strong>O próximo passo é praticar todo dia!</strong> (¡El próximo paso es practicar todos los días!)</p>
+          </div>
+        `
+      }
+    ]
+  }
+];
+
+// STATE
+const done = new Set();
+let cur = null;
+const all = MODS.flatMap(m => m.lessons);
+const total = all.length;
+
+function upd() {
+  const p = Math.round((done.size / total) * 100);
+  document.getElementById('pf').style.width = p + '%';
+  document.getElementById('pp').textContent = p + '%';
 }
-function restart(){
-  location.reload();
+
+function buildSB() {
+  const sb = document.getElementById('sidebar');
+  sb.innerHTML = '';
+  MODS.forEach((mod, mi) => {
+    const g = document.createElement('div');
+    g.className = 'mod-grp';
+    const hd = document.createElement('div');
+    hd.className = 'mod-hd';
+    hd.innerHTML = `<span class="mod-nm">${mod.title}</span><span class="mod-tg">0${mi+1}</span>`;
+    g.appendChild(hd);
+    mod.lessons.forEach(l => {
+      const b = document.createElement('button');
+      b.className = 'les-b' + (done.has(l.id) ? ' done' : '') + (cur === l.id ? ' active' : '');
+      b.innerHTML = `<span class="ld">${done.has(l.id) ? '✓' : '○'}</span>${l.title}`;
+      b.onclick = () => load(l.id);
+      g.appendChild(b);
+    });
+    sb.appendChild(g);
+  });
 }
+
+function load(id) {
+  const l = all.find(x => x.id === id);
+  if (!l) return;
+  cur = id;
+  const c = document.getElementById('content');
+  c.innerHTML = l.html();
+
+  const db = document.createElement('button');
+  db.className = 'done-btn' + (done.has(id) ? ' done' : '');
+  db.textContent = done.has(id) ? '✓ Lección completada' : 'Marcar como completada';
+  db.onclick = () => { done.add(id); db.className = 'done-btn done'; db.textContent = '✓ Lección completada'; upd(); buildSB(); };
+  c.appendChild(db);
+
+  const nav = document.createElement('div');
+  nav.className = 'lnav';
+  const idx = all.findIndex(x => x.id === id);
+  const prev = all[idx - 1];
+  const next = all[idx + 1];
+
+  const pb = document.createElement('button');
+  pb.className = 'nbtn'; pb.innerHTML = '← Anterior'; pb.disabled = !prev;
+  pb.onclick = () => prev && load(prev.id);
+
+  const nb = document.createElement('button');
+  nb.className = 'nbtn primary';
+  nb.innerHTML = next ? 'Siguiente →' : '🎉 Finalizar curso';
+  nb.onclick = () => next && load(next.id);
+
+  nav.appendChild(pb); nav.appendChild(nb);
+  c.appendChild(nav);
+  buildSB();
+  window.scrollTo(0, 0);
+}
+
+buildSB();
+load(all[0].id);
 </script>
 
 </body>
